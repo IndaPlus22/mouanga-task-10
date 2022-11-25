@@ -120,13 +120,13 @@ public class ListProcessor {
         int[] b = listProcessor.arraySequence(0, 4);
         System.out.println(b[2]);
         List<Integer> c = listProcessor.listSequence(0, 4);
-        System.out.println("Kys");
+        System.out.println("zyx");
         c.forEach(System.out::println);
-        System.out.println("Kys");
+        System.out.println("zyx");
         List<Integer> d = listProcessor.shuffled(c);
         d.forEach(System.out::println);
         int[] e = listProcessor.shuffled(b);
-        System.out.println("Kysfag: Now doing the array");
+        System.out.println("zyx: Now doing the array");
         System.out.println(b[2]);
         System.out.println(listProcessor.sumRecursive(b));
     }
