@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import java.util.*;
 
-class ListProcessor {
+public class ListProcessor {
     
     /** 
     * Returns an array with integers from "from" to "to".
@@ -167,7 +167,7 @@ class ListProcessor {
     }
 
     public int sumRecursive (int[] numbers) {
-
+        /*
         if (numbers.length == 0) {
             return 0; // we are done
         } else if (numbers.length == 1){
@@ -177,8 +177,11 @@ class ListProcessor {
             return a[0];
         }
         return numbers[0];
+        */
+        return 0;
     }
 
+/*
     public static int[] SumRecursive2(int[] numbers, int cumSum) {
          if(numbers.length <= 1) {
             int[] cumList = new int[1];
@@ -188,13 +191,15 @@ class ListProcessor {
          } else {
             cumSum += numbers[0];
             int[] a = SumRecursive2(Arrays.copyOfRange(numbers, 1, numbers.length), cumSum);
-            return a[0];
+            return a;
          }
     }
+    */
 
 
     public int sumRecursive (List<Integer> numbers) {
-
+        /*
+        List<Integer> numCopy = numbers;
         if (numbers.size() == 0) {
             return 0; // we are done
         } else if (numbers.size() == 1){
@@ -202,10 +207,14 @@ class ListProcessor {
         } else {
         return SumRecursive3(numbers, 0);
         }
-        return numbers[0];
+        return numbers.get(0);
+        */
+        return 0;
     }
 
+/*
     public static List<Integer> SumRecursive3(List<Integer> numbers, int cumSum) {
+        
          if(numbers.size() <= 1) {
             List<Integer> cumList = new List<Integer>();
             cumSum += numbers.get(0);
@@ -215,7 +224,10 @@ class ListProcessor {
             cumSum += numbers[0];
             return SumRecursive2(Arrays.copyOfRange(numbers, 1, numbers.length), cumSum);
          }
+         
+          
     }
+    */
     
 }
 
