@@ -168,6 +168,9 @@ public class ListProcessor {
         return sum;
     }
 
+    /**
+    * Takes the sum of an array list, but calculates it recursively instead of iteratively.
+    */
     public int sumRecursive (int[] numbers) {
         
         if (numbers.length == 0) {
@@ -194,7 +197,9 @@ public class ListProcessor {
          }
     }
 
-
+    /**
+    * Takes the sum of a list, but calculates it recursively instead of iteratively.
+    */
     public int sumRecursive (List<Integer> numbers) {
         List<Integer> numCopy = new ArrayList<Integer>();
         numCopy.addAll(numbers);
@@ -216,15 +221,17 @@ public class ListProcessor {
             return cumList;
         }
          else if(copy.size() == 1) {
-            List<Integer> cumList = new ArrayList<Integer>();
+            List<Integer> cumList = new ArrayList<Integer>(1);
             cumSum += copy.get(0);
-            cumList.set(0, cumSum);
+            cumList.add(cumSum);
             return cumList;
          } else {
             cumSum += copy.get(0);
             List<Integer> nextList = new ArrayList<Integer>();
             nextList.addAll(copy);
-            nextList.remove(0);
+            if(copy.size() > 1) {
+                nextList.remove(0);
+            }
             return SumRecursive3(nextList, cumSum);
          }
          
