@@ -63,7 +63,7 @@ public class ListProcessor {
     */
     public int[] shuffled(int[] numbers) {
         int length = numbers.length;
-        int[] shuffledNumbers = numbers;
+        int[] shuffledNumbers = Arrays.copyOfRange(numbers, 0, length);
 
         // the actual shuffling part
         Random rand = new Random();
@@ -71,17 +71,17 @@ public class ListProcessor {
         for(int i = 0; i < length; i++) {
             swap(
                 shuffledNumbers,
-                shuffledNumbers[rand.nextInt(length)],
-                shuffledNumbers[rand.nextInt(length)]
+                rand.nextInt(length),
+                rand.nextInt(length)
             );
         }
         return shuffledNumbers;
     }
 
     private static void swap(int[] list, int a, int b) {
-        int temp = a;
+        int temp = list[a];
         list[a] = list[b];
-        list[b] = list[temp];
+        list[b] = temp;
     }
 
 /** 
@@ -91,7 +91,8 @@ public class ListProcessor {
     */
     public List<Integer> shuffled(List<Integer> numbers) {
         int length = numbers.size();
-        List<Integer> shuffledNumbers = numbers;
+        List<Integer> shuffledNumbers = new ArrayList<Integer>();
+        shuffledNumbers.addAll(numbers);
 
         // the actual shuffling part
         Random rand = new Random();
@@ -114,7 +115,7 @@ public class ListProcessor {
         list.set(bPos, a);
     }
 
-
+    /*
     public static void main(String[] args) {
         ListProcessor listProcessor = new ListProcessor();
         int[] b = listProcessor.arraySequence(0, 4);
@@ -130,6 +131,7 @@ public class ListProcessor {
         System.out.println(b[2]);
         System.out.println(listProcessor.sumRecursive(b));
     }
+    */
 
 /** 
     * Returns the sum of the list.
@@ -167,7 +169,7 @@ public class ListProcessor {
     }
 
     public int sumRecursive (int[] numbers) {
-        /*
+        
         if (numbers.length == 0) {
             return 0; // we are done
         } else if (numbers.length == 1){
@@ -176,12 +178,9 @@ public class ListProcessor {
             int[] a = SumRecursive2(numbers, 0);
             return a[0];
         }
-        return numbers[0];
-        */
-        return 0;
     }
 
-/*
+
     public static int[] SumRecursive2(int[] numbers, int cumSum) {
          if(numbers.length <= 1) {
             int[] cumList = new int[1];
@@ -194,40 +193,43 @@ public class ListProcessor {
             return a;
          }
     }
-    */
 
 
     public int sumRecursive (List<Integer> numbers) {
-        /*
-        List<Integer> numCopy = numbers;
-        if (numbers.size() == 0) {
+        List<Integer> numCopy = new ArrayList<Integer>();
+        numCopy.addAll(numbers);
+        if (numCopy.size() == 0) {
             return 0; // we are done
-        } else if (numbers.size() == 1){
-            return numbers.get(0);
+        } else if (numCopy.size() == 1){
+            return numCopy.get(0);
         } else {
-        return SumRecursive3(numbers, 0);
+        return SumRecursive3(numCopy, 0).get(0);
         }
-        return numbers.get(0);
-        */
-        return 0;
     }
 
-/*
+
     public static List<Integer> SumRecursive3(List<Integer> numbers, int cumSum) {
-        
-         if(numbers.size() <= 1) {
-            List<Integer> cumList = new List<Integer>();
-            cumSum += numbers.get(0);
+        List<Integer> copy = new ArrayList<Integer>();
+        copy.addAll(numbers);
+        if (copy.size() == 0) {
+            List<Integer> cumList = new ArrayList<Integer>();
+            return cumList;
+        }
+         else if(copy.size() == 1) {
+            List<Integer> cumList = new ArrayList<Integer>();
+            cumSum += copy.get(0);
             cumList.set(0, cumSum);
             return cumList;
          } else {
-            cumSum += numbers[0];
-            return SumRecursive2(Arrays.copyOfRange(numbers, 1, numbers.length), cumSum);
+            cumSum += copy.get(0);
+            List<Integer> nextList = new ArrayList<Integer>();
+            nextList.addAll(copy);
+            nextList.remove(0);
+            return SumRecursive3(nextList, cumSum);
          }
          
           
     }
-    */
     
 }
 
